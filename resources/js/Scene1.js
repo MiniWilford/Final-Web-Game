@@ -17,6 +17,6 @@ class Scene1 extends Phaser.Scene {
     }
 
     create() { 
-      this.scene.start("FirestLevel");
+      this.scene.start("FirstLevel");
     }
 }
