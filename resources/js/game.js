@@ -1,13 +1,17 @@
 
 const config = {
-    width: 256,
-    height: 272,
+    type: Phaser.CANVAS,
+    width: 384,
+    height: 240,
     backgroundColor: 0x000000,
     scene: [Scene1, Scene2],
     pixelArt: true,
     physics: {
         default: "arcade",
         arcade: {
+            gravity: {
+                y: 0
+            },
             debug: false
         }
     }
