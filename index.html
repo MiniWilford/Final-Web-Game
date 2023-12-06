@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        body{
+            background: #000000;
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
     <title>Bengal Boogaloo</title>
+    <!-- Phaser Scripts -->
+    <script type="text/javascript" src="resources/vendor/phaser.min.js"></script>
+    <script type="text/javascript" src="resources/js/Scene1.js"></script>
+    <script type="text/javascript" src="resources/js/Scene2.js"></script>
+    <script type="text/javascript" src="resources/js/game.js"></script>
     <!-- Bootstrap Files (CSS/JS) -->
     <script src="resources/vendor/jquery.min.js"></script>
     <script src="resources/vendor/bootstrap.min.js"></script>
     <link rel="stylesheet" href="resources/vendor/bootstrap.min.css" />
-    <!-- Phaser Scripts -->
-    <script type="text/javascript" src="resources/vendor/phaser.min.js"></script>
-    <script type="text/javascript" src="resources/js/game.js"></script>
-    <script type="text/javascript" src="resources/assets/js/Scene1.js"></script>
-    <script type="text/javascript" src="resources/assets/js/Scene2.js"></script>
 </head>
-<body>
+<body style="overflow: hidden;">
+    <canvas width="384" height="240" style="image-rendering: pixelated; width: 384px; height: 240px;"></canvas>
 </body>
 </html>

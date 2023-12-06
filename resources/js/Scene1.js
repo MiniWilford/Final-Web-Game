@@ -1,15 +1,15 @@
-class Scene1 extends Phaser.Scene {
-    constructor() {
-      super("bootGame");
-    }
+class preloadGame extends Phaser.Scene{
+  constructor(){
+    super("PreloadGame");
+  }
   
     preload(){ 
        // load all assets tile sprites
-       this.load.image("bg_1", "assets/bg-1.png");
-       this.load.image("bg_2", "assets/bg-2.png");
-       this.load.image("ground", "assets/ground.png");
+       this.load.image("bg_1", "resources/assets/bg-1.png");
+       this.load.image("bg_2", "resources/assets/bg-2.png");
+       this.load.image("ground", "resources/assets/ground.png");
        // load spritesheet
-       this.load.spritesheet("player", "assets/bee.png",{
+       this.load.spritesheet("player", "resources/assets/bee.png",{
          frameWidth: 37,
          frameHeight: 39
        });
@@ -17,6 +17,6 @@ class Scene1 extends Phaser.Scene {
     }
 
     create() { 
-      this.scene.start("FirstLevel");
+      this.scene.start("PlayGame");
     }
 }

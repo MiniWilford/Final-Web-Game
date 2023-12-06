@@ -1,7 +1,7 @@
-class Scene2 extends Phaser.Scene {
-    constructor() {
-      super("FirstLevel");
-    }
+class playGame extends Phaser.Scene {
+  constructor() {
+    super("PlayGame");
+  }
     
     create() { 
       // makes sprite with the size of our game screen (tiled)
