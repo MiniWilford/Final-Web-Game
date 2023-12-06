@@ -1,16 +1,17 @@
-
-const config = {
-    width: 256,
-    height: 272,
-    backgroundColor: 0x000000,
-    scene: [Scene1, Scene2],
+let game;
+let config = {
+    type: Phaser.CANVAS,
+    width: 384,
+    height: 240,
     pixelArt: true,
     physics: {
         default: "arcade",
         arcade: {
-            debug: false
+            gravity: {
+            y: 0
+            }
         }
-    }
+    },
+    scene: [preloadGame, playGame]
 }
-
-const game = new Phaser.Game(config);
+game = new Phaser.Game(config);
