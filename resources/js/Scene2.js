@@ -25,7 +25,7 @@ class playGame extends Phaser.Scene {
       this.ground.y = 12 * 16;
 
       // add the player
-      this.player = this.add.sprite(game.config.width * 1.5, game.config.height / 2, "player");
+      this.player = this.physics.add.sprite(game.config.width * 1.5, game.config.height / 1.25, "player");
       // create an animation for the player known as "fly"
       this.anims.create({
         key: "fly",
@@ -61,6 +61,7 @@ class playGame extends Phaser.Scene {
         if(this.cursors.up.isDown) {
           this.player.y -= 2;
         }
+      }
         // Check is up is pressed by itself (more fluid combined)
         if(this.cursors.up.isDown) {
           this.player.y -= 2;
