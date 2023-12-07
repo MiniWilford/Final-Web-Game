@@ -61,6 +61,9 @@ class playGame extends Phaser.Scene {
         if(this.cursors.up.isDown) {
           this.player.y -= 2;
         }
+        // Check is up is pressed by itself (more fluid combined)
+        if(this.cursors.up.isDown) {
+          this.player.y -= 2;
       }
 
       // scrolls the background along with the camera being scroll
