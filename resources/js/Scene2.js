@@ -30,7 +30,7 @@ class playGame extends Phaser.Scene {
       this.player = this.physics.add.sprite(game.config.width * 1.5, game.config.height / 1.25, "player");
 
       // Add ground & player collision
-      //this.player.setCollideWorldBounds(true);  // Only goes to half of paralel screen
+      this.player.setCollideWorldBounds(true);  // Only goes to half of paralel screen
       this.physics.add.collider(this.player, this.ground);
 
 
