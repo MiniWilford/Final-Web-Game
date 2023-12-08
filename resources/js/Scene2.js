@@ -21,11 +21,19 @@ class playGame extends Phaser.Scene {
       this.ground = this.add.tileSprite(0, 0, game.config.width, 48, "ground");
       this.ground.setOrigin(0, 0);
       this.ground.setScrollFactor(0);
+      
       // tile is shorter, positioned it at the bottom of he screen
       this.ground.y = 12 * 16;
+     
 
       // add the player
-      this.player = this.add.sprite(game.config.width * 1.5, game.config.height / 2, "player");
+      this.player = this.physics.add.sprite(game.config.width * 1.5, game.config.height / 1.25, "player");
+
+      // Add ground & player collision
+      //this.player.setCollideWorldBounds(true);  // Only goes to half of paralel screen
+      this.physics.add.collider(this.player, this.ground);
+
+
       // create an animation for the player known as "fly"
       this.anims.create({
         key: "fly",
@@ -52,14 +60,25 @@ class playGame extends Phaser.Scene {
       if (this.cursors.left.isDown && this.player.x > 0) {
         this.player.x -= 3;
         this.player.scaleX = 1;
+        if(this.cursors.up.isDown) {
+          this.player.setVelocityY(-200);
+        }
       } else if (this.cursors.right.isDown && this.player.x < game.config.width * 3) {
         this.player.x += 3;
         this.player.scaleX = -1;
+        if(this.cursors.up.isDown) {
+          this.player.setVelocityY(-200);
+        }
+      }
+        // Check is up is pressed by itself (more fluid combined)
+        if(this.cursors.up.isDown) {
+          this.player.setVelocityY(-200);
       }
 
       // scrolls the background along with the camera being scroll
       this.bg_1.tilePositionX = this.myCam.scrollX * .3;
       this.bg_2.tilePositionX = this.myCam.scrollX * .6;
       this.ground.tilePositionX = this.myCam.scrollX;
+      
     }
 }
