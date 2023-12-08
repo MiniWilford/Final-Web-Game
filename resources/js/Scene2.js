@@ -23,15 +23,15 @@ class playGame extends Phaser.Scene {
       this.ground.setScrollFactor(0);
       
       // tile is shorter, positioned it at the bottom of he screen
-      this.ground.y = 12 * 16;
+      this.ground.y = 20 * 16;
      
 
       // add the player
       this.player = this.physics.add.sprite(game.config.width * 1.5, game.config.height / 1.25, "player");
 
       // Add ground & player collision
-      this.player.setCollideWorldBounds(true);  // Only goes to half of paralel screen
-      this.physics.add.collider(this.player, this.ground);
+      //this.player.setCollideWorldBounds(true);  // Only goes to half of paralel screen
+      //this.physics.add.collider(this.player, this.ground);
 
 
       // create an animation for the player known as "fly"
