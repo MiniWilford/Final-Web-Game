@@ -95,14 +95,15 @@ class playGame extends Phaser.Scene {
       scoreText.tilePositionX = this.myCam.ScrollX;
 
       // Reset & Failure conditions when touching skybox / ground
-      if(this.player.y > Number(game.canvas.height)+100) {
-        this.player.y -= 100;
+      if(this.player.y > Number(game.canvas.height)+100) { // Restart position to scene start (x,y)
+        this.player.y = game.config.height / 1.75; // Middle of screen
+        score -= 2;
+        scoreText.setText('Score: ' + score);
+        
       }
-      //set lower Bounds
-      if(this.player.y < -200) {
-          score -= 2;
-          scoreText.setText('Score: ' + score);
-          this.player.setPostion(25, game.config.height / 1.75); // Restart position to scene start (x,y)
+      //set Upper Bounds
+      if(this.player.y < 0) {
+        this.player.y = 20;
           
       }
 
@@ -110,7 +111,7 @@ class playGame extends Phaser.Scene {
       if(collectedItems >= 1) {
         console.log("Collected Item")
         // Play Cheer 
-        this.sound.play("cheer");
+        // this.sound.play("cheer");
         this.scene.start("GameWon");
       }
 
