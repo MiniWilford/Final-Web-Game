@@ -120,6 +120,7 @@ class playGame extends Phaser.Scene {
       //set lower Bounds
       if(this.player.y < -200) {
           console.log("y= ", this.player.y)
+          score -= 2;
           this.player.y += 200;
       }
 
@@ -127,7 +128,7 @@ class playGame extends Phaser.Scene {
       //this.item.setPosition(1100, 110);
 
       // Determine if user can move on to next scene
-      if(score >= 10) {
+      if(collectItem >= 1) {
         console.log("Collected Item")
         //this.scene.start("PlayGame");
       }
