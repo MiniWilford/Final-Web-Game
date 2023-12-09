@@ -1,6 +1,6 @@
 class gameOver extends Phaser.Scene {
     constructor() {
-        super("GameOver")
+        super("GameOver");
     }
 
     preload() {
@@ -27,7 +27,7 @@ class gameOver extends Phaser.Scene {
         this.add.rectangle(0, 0, 384, 240, 0x000000).setOrigin(0, 0);
 
         // Add text for player
-        this.add.text(192, 20, "GameOver, press left or right arrow key to continue...").setOrigin(0,0);
+        this.add.text(0, 20, "GameOver, \npress left or right arrow key \n to continue...").setOrigin(0,0);
 
         // enables keys to be read from keyboard
         this.cursors = this.input.keyboard.createCursorKeys();

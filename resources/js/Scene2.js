@@ -4,7 +4,7 @@ let canvasHeight = 240;
 let scoreText;
 let score = 0;
 let collectedItems = 0;
-let gameOver = false;
+let player_gameOver = false;
 
 class playGame extends Phaser.Scene {
   constructor() {
@@ -163,13 +163,14 @@ function playerHit() {
     console.log("Player hit!!!!!!!!!")
     hitflag=true;
     score -= 10;
+    scoreText.setText('Score: ' + score);
 }
 
 function playerDead() {
     console.log("Player dead!!!!!!!!!")
     
     //player.setCollideWorldBounds(false);
-    gameOver =  true;
+    player_gameOver =  true;
 }
 
 function collectItem (player, item) {
