@@ -37,16 +37,11 @@ class gameWon extends Phaser.Scene {
     update() {
 
         // Read User input to initiate restart
-        if (this.cursors.left.isDown) {
+        if (this.cursors.left.isDown || this.cursors.right.isDown) {
             //restart to scene1
             this.scene.start("PreloadGame");
             collectedItems = 0;
         } 
-        else if (this.cursors.right.isDown) {
-            //restart to scene1
-            this.scene.start("PreloadGame");
-            collectedItems = 0;
-        }
 
     }
 }
