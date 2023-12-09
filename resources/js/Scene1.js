@@ -17,6 +17,9 @@ class preloadGame extends Phaser.Scene{
          frameWidth: 37,
          frameHeight: 39
        });
+       
+       // Load Audio
+       this.load.audio('cheer', 'resources/assets/sounds/stadium_cheer.wav');
 
     }
 
