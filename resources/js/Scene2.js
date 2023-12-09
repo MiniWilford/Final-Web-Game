@@ -35,8 +35,10 @@ class playGame extends Phaser.Scene {
       this.player = this.physics.add.sprite(25, game.config.height / 1.75, "player");
 
       // add the collectable item sprite
-      this.item = this.add.sprite(1100, 110, "item");
+      this.item = this.physics.add.sprite(1100, 110, "item");
       this.item.setInteractive();
+      this.item.body.allowGravity = false; // enable to float by itself
+      //this.item.setCollideWorldBounds(true); //Enables star to interact with world / player
 
       // Add Obstacles and respective gaps
       let obstacles = this.physics.add.staticGroup();
@@ -51,15 +53,16 @@ class playGame extends Phaser.Scene {
 
 
       // Add Player Collision with Obstacles / items
-      this.physics.add.collider(this.player, obstacles, playerHit, null, game)
-			this.physics.add.collider(this.player, this.item);
-
+      this.physics.add.collider(this.player, obstacles, playerHit)
+			//this.physics.add.collider(this.player, this.item, collectItem, null, this);
 
       // Collect Item
 			this.physics.add.overlap(this.player, this.item, collectItem, null, this);
+      this.physics.add.collider(this.player, this.item, collectItem, null, this);
 
       // Add score text
 			scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+      scoreText.setScrollFactor(0);
       //scoreText.cameraOffset(true)
 
       // create an animation for the player known as "fly"
@@ -120,10 +123,14 @@ class playGame extends Phaser.Scene {
           this.player.y += 200;
       }
 
+      // Set item static to Y
+      //this.item.setPosition(1100, 110);
+
       // Determine if user can move on to next scene
-      if(collectedItems >= 1) {
+      if(score >= 10) {
         console.log("Collected Item")
-        //this.scene.start("PlayGame");
+        
+        this.scene.start("PlayGame");
       }
     }
   }
@@ -158,8 +165,9 @@ function playerDead() {
 let score = 0;
 function collectItem (player, item) {
         // Remove item after collected
-				this.item.disableBody(true, true);
-        collectedItems =+ 1;
+			  item.disableBody(true, true);
+        collectedItems += 1;
+        console.log(collectedItems);
 
         // Change Score
 				score += 10;
