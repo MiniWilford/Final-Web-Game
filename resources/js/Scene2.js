@@ -62,7 +62,9 @@ class playGame extends Phaser.Scene {
 
       // Add score text
 			scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-      scoreText.setScrollFactor(0);
+      scoreText.setFont("32px Castellar")
+      scoreText.setScrollFactor(0); // Scroll with screen
+
       //scoreText.cameraOffset(true)
 
       // create an animation for the player known as "fly"
