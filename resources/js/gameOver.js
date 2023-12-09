@@ -28,6 +28,7 @@ class gameOver extends Phaser.Scene {
 
         // Add text for player
         this.add.text(0, 20, "Game Over!!, \n\nPress left or right arrow key\n to restart...").setOrigin(0,0);
+        this.add.text(0, 50, "{name} scored: " + score);
 
         // enables keys to be read from keyboard
         this.cursors = this.input.keyboard.createCursorKeys();

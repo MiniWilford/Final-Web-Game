@@ -28,6 +28,7 @@ class gameWon extends Phaser.Scene {
 
         // Add text for player
         this.add.text(0, 20, "You win! \n\npress left or right arrow key\n to continue...").setOrigin(0,0);
+        this.add.text(0, 150, "{name} scored: " + score);
 
         // enables keys to be read from keyboard
         this.cursors = this.input.keyboard.createCursorKeys();
