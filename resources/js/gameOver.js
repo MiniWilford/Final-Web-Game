@@ -23,6 +23,12 @@ class gameOver extends Phaser.Scene {
 
     create() {
 
+        // Add main background
+        this.add.rectangle(0, 0, 384, 240, 0x000000).setOrigin(0, 0);
+
+        // Add text for player
+        this.add.text(192, 20, "GameOver, press left or right arrow key to continue...").setOrigin(0,0);
+
     }
 
     update() {
