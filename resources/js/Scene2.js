@@ -135,12 +135,12 @@ class playGame extends Phaser.Scene {
       // Determine if user can move on to next scene
       if(collectedItems >= 1) {
         console.log("Collected Item")
-        this.scene.start("GameOver");
+        this.scene.start("GameWon");
       }
 
       // Determine GameOver condition
       if(score < -20) {
-
+        this.scene.start("GameOver");
       }
     }
   }

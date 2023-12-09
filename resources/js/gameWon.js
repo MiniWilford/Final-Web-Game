@@ -1,6 +1,6 @@
-class gameOver extends Phaser.Scene {
+class gameWon extends Phaser.Scene {
     constructor() {
-        super("GameOver");
+        super("GameWon");
     }
 
     preload() {
@@ -27,7 +27,7 @@ class gameOver extends Phaser.Scene {
         this.add.rectangle(0, 0, 384, 240, 0x000000).setOrigin(0, 0);
 
         // Add text for player
-        this.add.text(0, 20, "Game Over!!, \n\nPress left or right arrow key\n to restart...").setOrigin(0,0);
+        this.add.text(0, 20, "You win! \n\npress left or right arrow key\n to continue...").setOrigin(0,0);
 
         // enables keys to be read from keyboard
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -35,16 +35,6 @@ class gameOver extends Phaser.Scene {
     }
 
     update() {
-
-        // Read User input to initiate restart
-        if (this.cursors.left.isDown) {
-            //restart to scene1
-            this.scene.start("PreloadGame");
-        } 
-        else if (this.cursors.right.isDown) {
-            //restart to scene1
-            this.scene.start("PreloadGame");
-        }
 
     }
 }
