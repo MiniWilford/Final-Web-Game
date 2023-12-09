@@ -1,6 +1,8 @@
 let obstacleCount = 0;
 let canvasWidth = 384;
 let canvasHeight = 240;
+let scoreText;
+let collectedItems;
 
 class playGame extends Phaser.Scene {
   constructor() {
@@ -33,7 +35,8 @@ class playGame extends Phaser.Scene {
       this.player = this.physics.add.sprite(25, game.config.height / 1.75, "player");
 
       // add the collectable item sprite
-      this.item = this.add.sprite(1100, 110, game.config.width, 48, "item")
+      this.item = this.add.sprite(1100, 110, "item");
+      this.item.setInteractive();
 
       // Add Obstacles and respective gaps
       let obstacles = this.physics.add.staticGroup();
@@ -49,8 +52,15 @@ class playGame extends Phaser.Scene {
 
       // Add Player Collision with Obstacles / items
       this.physics.add.collider(this.player, obstacles, playerHit, null, game)
-      
+			this.physics.add.collider(this.player, this.item);
 
+
+      // Collect Item
+			this.physics.add.overlap(this.player, this.item, collectItem, null, this);
+
+      // Add score text
+			scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+      //scoreText.cameraOffset(true)
 
       // create an animation for the player known as "fly"
       this.anims.create({
@@ -97,6 +107,7 @@ class playGame extends Phaser.Scene {
       this.bg_1.tilePositionX = this.myCam.scrollX * .3;
       this.bg_2.tilePositionX = this.myCam.scrollX * .6;
       this.ground.tilePositionX = this.myCam.scrollX;
+      scoreText.tilePositionX = this.myCam.ScrollX;
 
       // Reset & Failure conditions when touching skybox / ground
       if(this.player.y > Number(game.canvas.height)+100) {
@@ -107,6 +118,12 @@ class playGame extends Phaser.Scene {
       if(this.player.y < -200) {
           console.log("y= ", this.player.y)
           this.player.y += 200;
+      }
+
+      // Determine if user can move on to next scene
+      if(collectedItems >= 1) {
+        console.log("Collected Item")
+        //this.scene.start("PlayGame");
       }
     }
   }
@@ -137,3 +154,14 @@ function playerDead() {
     //player.setCollideWorldBounds(false);
     let gameOver =  true;
 }
+
+let score = 0;
+function collectItem (player, item) {
+        // Remove item after collected
+				this.item.disableBody(true, true);
+        collectedItems =+ 1;
+
+        // Change Score
+				score += 10;
+        scoreText.setText('Score: ' + score);
+      }
