@@ -101,6 +101,7 @@ class playGame extends Phaser.Scene {
       //set lower Bounds
       if(this.player.y < -200) {
           score -= 2;
+          scoreText.setText('Score: ' + score);
           this.player.setPostion(25, game.config.height / 1.75); // Restart position to scene start (x,y)
           
       }
@@ -114,7 +115,7 @@ class playGame extends Phaser.Scene {
       }
 
       // Determine GameOver condition
-      if(score < -20 || player_gameOver) {
+      if(score < -10 || player_gameOver == true) {
         this.scene.start("GameOver");
       }
     }
