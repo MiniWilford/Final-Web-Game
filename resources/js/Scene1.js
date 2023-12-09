@@ -11,7 +11,9 @@ class preloadGame extends Phaser.Scene{
        // Load Pipes
        this.load.image('pipeb', 'resources/assets/pipeb.png');
        this.load.image('pipet', 'resources/assets/pipet.png');
-       // load spritesheet
+       // Load Item
+       this.load.image('item', 'resources/assets/star.png');
+       // load spritesheet as player
        this.load.spritesheet("player", "resources/assets/bee.png",{
          frameWidth: 37,
          frameHeight: 39
