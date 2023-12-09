@@ -46,7 +46,7 @@ class playGame extends Phaser.Scene {
       obstacles.create(obstaclePos, obstacleRandomGap[1], 'pipet').setScale(1).refreshBody();
 
       // Add Player Collision with Obstacles
-      this.physics.add.collider(this.player, obstacles, playerHit, this.player)
+      this.physics.add.collider(this.player, obstacles, playerHit)
 
       // Collect Item
 			this.physics.add.overlap(this.player, this.item, collectItem, null, this);
@@ -114,7 +114,7 @@ class playGame extends Phaser.Scene {
       }
 
       // Determine GameOver condition
-      if(score < -20) {
+      if(score < -20 || player_gameOver) {
         this.scene.start("GameOver");
       }
     }
@@ -128,7 +128,6 @@ function getRandomGap() {
   let random =  Math.floor(Math.random() * (max - min + 1)) + min;
   let random_top = random-((gap/2)+260);
   let random_bottom = random+((gap/2)+260);
-  console.log(random_bottom,random_top)
   return [random_bottom, random_top]
 }
 
