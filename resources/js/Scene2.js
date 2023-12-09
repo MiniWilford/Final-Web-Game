@@ -47,8 +47,9 @@ class playGame extends Phaser.Scene {
       obstacles.create(obstaclePos, pos[1], 'pipet').setScale(1).refreshBody();
 
 
-      // Add Player Collision with Obstacles
+      // Add Player Collision with Obstacles / items
       this.physics.add.collider(this.player, obstacles, playerHit, null, game)
+      
 
 
       // create an animation for the player known as "fly"
