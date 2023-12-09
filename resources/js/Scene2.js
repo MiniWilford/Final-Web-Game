@@ -129,8 +129,7 @@ class playGame extends Phaser.Scene {
       // Determine if user can move on to next scene
       if(score >= 10) {
         console.log("Collected Item")
-        
-        this.scene.start("PlayGame");
+        //this.scene.start("PlayGame");
       }
     }
   }
