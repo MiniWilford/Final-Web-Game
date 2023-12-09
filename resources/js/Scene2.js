@@ -2,7 +2,9 @@ let obstacleCount = 0;
 let canvasWidth = 384;
 let canvasHeight = 240;
 let scoreText;
-let collectedItems;
+let score = 0;
+let collectedItems = 0;
+let gameOver = false;
 
 class playGame extends Phaser.Scene {
   constructor() {
@@ -53,7 +55,7 @@ class playGame extends Phaser.Scene {
 
 
       // Add Player Collision with Obstacles / items
-      this.physics.add.collider(this.player, obstacles, playerHit)
+      this.physics.add.collider(this.player, obstacles, playerHit, this.player)
 			//this.physics.add.collider(this.player, this.item, collectItem, null, this);
 
       // Collect Item
@@ -123,16 +125,22 @@ class playGame extends Phaser.Scene {
       if(this.player.y < -200) {
           console.log("y= ", this.player.y)
           score -= 2;
-          this.player.y += 200;
+          this.player.setPostion(25, game.config.height / 1.75); // Restart position to scene start (x,y)
+          
       }
 
       // Set item static to Y
       //this.item.setPosition(1100, 110);
 
       // Determine if user can move on to next scene
-      if(collectItem >= 1) {
+      if(collectedItems >= 1) {
         console.log("Collected Item")
-        //this.scene.start("PlayGame");
+        this.scene.start("GameOver");
+      }
+
+      // Determine GameOver condition
+      if(score < -20) {
+
       }
     }
   }
@@ -154,17 +162,16 @@ function playerHit() {
     if(hitflag) return
     console.log("Player hit!!!!!!!!!")
     hitflag=true;
-    setTimeout(playerDead, 200)
+    score -= 10;
 }
 
 function playerDead() {
     console.log("Player dead!!!!!!!!!")
-    let player = this.player
+    
     //player.setCollideWorldBounds(false);
-    let gameOver =  true;
+    gameOver =  true;
 }
 
-let score = 0;
 function collectItem (player, item) {
         // Remove item after collected
 			  item.disableBody(true, true);
