@@ -11,7 +11,7 @@ class gameOver extends Phaser.Scene {
         this.load.image('pipeb', 'resources/assets/pipeb.png');
         this.load.image('pipet', 'resources/assets/pipet.png');
         // Load Item
-        this.load.image('item', 'resources/assets/star.png');
+        this.load.image('item', 'resources/assets/football.png');
         // load spritesheet as player
         this.load.spritesheet("player", "resources/assets/bee.png",{
             frameWidth: 37,
