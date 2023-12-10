@@ -42,6 +42,7 @@ class gameWon extends Phaser.Scene {
             this.scene.start("PreloadGame");
             collectedItems = 0;
             scoreText.setText('Score: ' + score);
+            hit_times = 0;
         } 
 
     }
