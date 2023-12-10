@@ -50,7 +50,59 @@
             </div>
             <div class="col-md-4">
                 <h1 class="text-center mb-4 animate__animated animate__bounce">Bengal Boogaloo</h1>
-
+                <script>
+                    $(document).ready(function() {
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+                        $("#location").text("Latitude: " + latitude + ", Longitude: " + longitude);
+                        // Call the reverse geocoding service and weather API here
+             
+                        $.ajax({
+                            url: 'https://api.opencagedata.com/geocode/v1/json',
+                            data: {
+                                q: latitude + "," + longitude,
+                                key: '9d276313ab0541968860368f37ac3cef' // Replace with your API key
+                            },
+                            success: function(data) {
+                                var city = data.results[0].components.city;
+                                $("#city").text( city);
+                                // Call the weather API here
+                            },
+                            error: function() {
+                                $("#city").text("City data not available.");
+                            }
+                        });
+                        
+                        // Inside the Geolocation callback
+                        $.ajax({
+                            url: 'https://api.openweathermap.org/data/2.5/weather',
+                            data: {
+                                lat: latitude,
+                                lon: longitude,
+                                appid: '366832d7cdcf796d88b8ad6aa35f4b2c' // Replace with your API key
+                            },
+                            success: function(data) {
+                                var weatherDescription = data.weather[0].description;
+                                $("#weather").text( weatherDescription);
+                            },
+                            error: function() {
+                                $("#weather").text("Weather data not available.");
+                            }
+                        });
+             
+             
+                    });
+                } else {
+                    $("#location").text("Geolocation is not available in this browser.");
+                }
+             
+                // alert(latitude)
+                // Inside the Geolocation callback
+            });
+             
+                </script>
                 <div id="welcome-screen">
                     <form id="name-form">
                         <div class="form-group">
