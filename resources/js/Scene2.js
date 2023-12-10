@@ -114,7 +114,8 @@ class playGame extends Phaser.Scene {
         console.log("Collected Item")
         // Play Cheer 
         // this.sound.play("cheer");
-        this.scene.start("GameWon");
+        //this.scene.start("GameWon");
+        this.scene.start("PlayGameLevelTwo");
       }
 
       // Determine GameOver condition
