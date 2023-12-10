@@ -109,7 +109,7 @@ class playGameLevelTwo extends Phaser.Scene {
       if(this.player.y > Number(game.canvas.height)+100) { // Restart position to scene start (x,y)
         this.player.x = 25; // Back to start
         this.player.y = game.config.height / 1.75; // Middle of screen
-        score -= 2;
+        score -= 10;
         scoreText.setText('Score: ' + score);
 
       }
