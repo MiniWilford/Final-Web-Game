@@ -1,13 +1,12 @@
 class gameOver extends Phaser.Scene {
     constructor() {
-        super("GameOver")
+        super("GameOver");
     }
 
     preload() {
         // load all assets tile sprites
         this.load.image("bg_1", "resources/assets/bg-1.png");
         this.load.image("bg_2", "resources/assets/bg-2.png");
-        this.load.image("ground", "resources/assets/ground.png");
         // Load Pipes
         this.load.image('pipeb', 'resources/assets/pipeb.png');
         this.load.image('pipet', 'resources/assets/pipet.png');
@@ -27,7 +26,8 @@ class gameOver extends Phaser.Scene {
         this.add.rectangle(0, 0, 384, 240, 0x000000).setOrigin(0, 0);
 
         // Add text for player
-        this.add.text(192, 20, "GameOver, press left or right arrow key to continue...").setOrigin(0,0);
+        this.add.text(0, 20, "Game Over!!, \n\nPress left or right arrow key\n to restart...").setOrigin(0,0);
+        this.add.text(0, 150, "{name} scored: " + score);
 
         // enables keys to be read from keyboard
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -37,14 +37,14 @@ class gameOver extends Phaser.Scene {
     update() {
 
         // Read User input to initiate restart
-        if (this.cursors.left.isDown) {
+        if (this.cursors.left.isDown || this.cursors.right.isDown) {
             //restart to scene1
-            this.scene.start("PreloadGame");
+            collectedItems = 0;
+            player_gameOver = false;
+            hit_times = 0;
+            this.scene.start("PlayGame");
+            score = 0;
         } 
-        else if (this.cursors.right.isDown) {
-            //restart to scene1
-            this.scene.start("PreloadGame");
-        }
 
     }
 }
