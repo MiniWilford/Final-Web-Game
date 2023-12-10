@@ -27,55 +27,5 @@
 </head>
 <body style="overflow: hidden;">
     <canvas width="384" height="240" style="image-rendering: pixelated; width: 384px; height: 240px;"></canvas>
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-12">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <th>Location</th>
-                            <th id="location">Loading location...</th>
-                        </tr>
-
-                         <tr>
-                            <th>City</th>
-                            <th id="city">Loading city...</th>
-                        </tr>
-                        <tr>
-                            <th>Weather</th>
-                            <th id="weather">Loading weather...</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-4">
-                <h1 class="text-center mb-4 animate__animated animate__bounce">Bengal Boogaloo</h1>
-              
-                <button class="btn btn-primary btn-block" id="start-button">Start Game</button>
-                <div class="hangman-container mt-4">
-                    <canvas id="hangman-canvas" width="200" height="200" class="border"></canvas>
-                    <div class="word-display mt-3"></div>
-                     <div class="guessed-letters mt-3">
-                        Previously Guessed: <span id="guessed-letters"></span>
-                    </div>
-                                        <div class="form-group mt-3">
-                        <input type="text" class="form-control" id="guess-input" maxlength="1">
-                    </div>
-                    <button class="btn btn-success btn-block" id="guess-button">Guess</button>
-                    <button class="btn btn-danger btn-block" id="reset-button" >Reset</button>
-                </div>
-
-                <div id="welcome-screen">
-                    <form id="name-form">
-                        <div class="form-group">
-                            <label for="username">Your Name</label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter Name Here....">
-                        </div>
-                        <button id="start-game-button" type="button" class="btn btn-primary">Start Game!</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
