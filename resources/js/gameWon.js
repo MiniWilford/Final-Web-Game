@@ -8,8 +8,8 @@ class gameWon extends Phaser.Scene {
         this.load.image("bg_1", "resources/assets/bg-1.png");
         this.load.image("bg_2", "resources/assets/bg-2.png");
         // Load Pipes
-        this.load.image('pipeb', 'resources/assets/pipeb.png');
-        this.load.image('pipet', 'resources/assets/pipet.png');
+        this.load.image('goalb', 'resources/assets/goal_bottom.png');
+        this.load.image('goalt', 'resources/assets/goal_top.png');
         // Load Item
         this.load.image('item', 'resources/assets/football.png');
         // load spritesheet as player

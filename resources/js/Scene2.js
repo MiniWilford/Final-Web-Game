@@ -43,8 +43,8 @@ class playGame extends Phaser.Scene {
       let obstacleRandomGap = getRandomGap(); // Generate Gaps
 
       // bottom placable at 260+gap to height
-      obstacles.create(obstaclePos, obstacleRandomGap[0], 'pipeb').setScale(1).refreshBody();
-      obstacles.create(obstaclePos, obstacleRandomGap[1], 'pipet').setScale(1).refreshBody();
+      obstacles.create(obstaclePos, obstacleRandomGap[0], 'goalb').setScale(1).refreshBody();
+      obstacles.create(obstaclePos, obstacleRandomGap[1], 'goalt').setScale(1).refreshBody();
 
       // Add Player Collision with Obstacles
       this.physics.add.collider(this.player, obstacles, playerHit)

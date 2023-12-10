@@ -44,23 +44,23 @@ class playGameLevelTwo extends Phaser.Scene {
         let obstacleRandomGapFour = getRandomGap();
 
         // Place obstacles with random gap
-        obstacles.create(obstaclePos, obstacleRandomGapOne[0], 'pipeb').setScale(1).refreshBody();
-        obstacles.create(obstaclePos, obstacleRandomGapOne[1], 'pipet').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapOne[0], 'goalb').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapOne[1], 'goalt').setScale(1).refreshBody();
 
         // Add another random obstacle location for player to avoid
         obstaclePos = 200;
-        obstacles.create(obstaclePos, obstacleRandomGapTwo[0], 'pipeb').setScale(1).refreshBody();
-        obstacles.create(obstaclePos, obstacleRandomGapTwo[1], 'pipet').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapTwo[0], 'goalb').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapTwo[1], 'goalt').setScale(1).refreshBody();
 
         // Add one more obstacle
         obstaclePos = 100;
-        obstacles.create(obstaclePos, obstacleRandomGapThree[0], 'pipeb').setScale(1).refreshBody();
-        obstacles.create(obstaclePos, obstacleRandomGapThree[1], 'pipet').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapThree[0], 'goalb').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapThree[1], 'goalt').setScale(1).refreshBody();
 
         // More obstacle
         obstaclePos = 700;
-        obstacles.create(obstaclePos, obstacleRandomGapFour[0], 'pipeb').setScale(1).refreshBody();
-        obstacles.create(obstaclePos, obstacleRandomGapFour[1], 'pipet').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapFour[0], 'goalb').setScale(1).refreshBody();
+        obstacles.create(obstaclePos, obstacleRandomGapFour[1], 'goalt').setScale(1).refreshBody();
 
         // Add Player Collision with Obstacles
         this.physics.add.collider(this.player, obstacles, playerHit);
