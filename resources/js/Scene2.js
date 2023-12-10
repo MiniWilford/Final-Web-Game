@@ -6,6 +6,7 @@ let score = 0;
 let collectedItems = 0;
 let hit = false;
 let player_gameOver = false;
+let hit_times = 0;
 
 class playGame extends Phaser.Scene {
   constructor() {
@@ -53,7 +54,7 @@ class playGame extends Phaser.Scene {
       this.physics.add.collider(this.player, this.item, collectItem, null, this);
 
       // Add score text
-			scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+			scoreText = this.add.text(16, 16, 'score: ' + score, { fontSize: '32px', fill: '#000' });
       scoreText.setFont("32px Castellar")
       scoreText.setScrollFactor(0); // Scroll with screen
 
@@ -96,10 +97,11 @@ class playGame extends Phaser.Scene {
 
       // Reset & Failure conditions when touching skybox / ground
       if(this.player.y > Number(game.canvas.height)+100) { // Restart position to scene start (x,y)
+        this.player.x = 25; // Back to start
         this.player.y = game.config.height / 1.75; // Middle of screen
         score -= 2;
         scoreText.setText('Score: ' + score);
-        
+
       }
       //set Upper Bounds
       if(this.player.y < 0) {
@@ -116,7 +118,7 @@ class playGame extends Phaser.Scene {
       }
 
       // Determine GameOver condition
-      if(score < -10 || player_gameOver == true) {
+      if(player_gameOver == true) {
         this.scene.start("GameOver");
       }
     }
@@ -138,14 +140,10 @@ function playerHit() {
   if(hit) return
   console.log("Player hit!!!!!!!!!");
   hit=true;
-  score -= 10;
+  hit_times += 1;
+  score -= 100;
   scoreText.setText('Score: ' + score);
-}
-
-function playerDead() {
-    console.log("Player dead!!!!!!!!!");
-    //player.setCollideWorldBounds(false);
-    player_gameOver =  true;
+  player_gameOver = true;
 }
 
 function collectItem (player, item) {
