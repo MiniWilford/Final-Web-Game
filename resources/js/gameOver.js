@@ -42,7 +42,7 @@ class gameOver extends Phaser.Scene {
             collectedItems = 0;
             player_gameOver = false;
             hit_times = 0;
-            this.scene.start("PreloadGame");
+            this.scene.start("PlayGame");
             score = 0;
         } 
 
