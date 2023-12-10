@@ -29,11 +29,13 @@ class playGameLevelTwo extends Phaser.Scene {
         let obstacles = this.physics.add.staticGroup();
         let obstacleGap = 50;
         let canvasWidth = 384;
-        let obstaclePos = canvasWidth+2*obstacleGap; // Place Obstacle
-        let obstacleRandomGapOne = getRandomGap(); // Generate Gaps
-        let obstacleRandomGapTwo = getRandomGap(); // Generate Gaps
-        let obstacleRandomGapThree = getRandomGap(); // Generate Gaps
-        let obstacleRandomGapFour = getRandomGap(); // Generate Gaps
+        let obstaclePos = 500; // Place Obstacle
+
+        // Generate random gaps
+        let obstacleRandomGapOne = getRandomGap();
+        let obstacleRandomGapTwo = getRandomGap(); 
+        let obstacleRandomGapThree = getRandomGap();
+        let obstacleRandomGapFour = getRandomGap();
 
         // Place obstacles with random gap
         obstacles.create(obstaclePos, obstacleRandomGapOne[0], 'pipeb').setScale(1).refreshBody();
