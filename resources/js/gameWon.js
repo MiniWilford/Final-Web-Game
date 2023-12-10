@@ -13,7 +13,7 @@ class gameWon extends Phaser.Scene {
         // Load Item
         this.load.image('item', 'resources/assets/football.png');
         // load spritesheet as player
-        this.load.spritesheet("player", "resources/assets/bee.png",{
+        this.load.spritesheet("player", "resources/assets/helmet.png",{
             frameWidth: 37,
             frameHeight: 39
         });
