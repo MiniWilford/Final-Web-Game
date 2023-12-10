@@ -20,15 +20,21 @@ class playGameLevelTwo extends Phaser.Scene {
         this.player = this.physics.add.sprite(25, game.config.height / 1.75, "player");
 
         // add the collectable item sprite
-        this.item = this.physics.add.sprite(1100, 110, "item");
-        this.item.setInteractive();
-        this.item.body.allowGravity = false; // enable to float by itself
-        //this.item.setCollideWorldBounds(true); //Enables star to interact with world / player
+        this.itemOne = this.physics.add.sprite(1100, 110, "item");
+        this.itemOne.setInteractive();
+        this.itemOne.body.allowGravity = false; // enable to float by itself
+
+        this.itemTwo = this.physics.add.sprite(1100, 30, "item");
+        this.itemTwo.setInteractive();
+        this.itemTwo.body.allowGravity = false; // enable to float by itself
+
+        this.itemThree = this.physics.add.sprite(1100, 210, "item");
+        this.itemThree.setInteractive();
+        this.itemThree.body.allowGravity = false; // enable to float by itself
+
 
         // Add Obstacles and respective gaps
         let obstacles = this.physics.add.staticGroup();
-        let obstacleGap = 50;
-        let canvasWidth = 384;
         let obstaclePos = 500; // Place Obstacle
 
         // Generate random gaps
@@ -59,9 +65,13 @@ class playGameLevelTwo extends Phaser.Scene {
         // Add Player Collision with Obstacles
         this.physics.add.collider(this.player, obstacles, playerHit);
 
-        // Collect Item
-        this.physics.add.overlap(this.player, this.item, collectItem, null, this);
-        this.physics.add.collider(this.player, this.item, collectItem, null, this);
+        // Collect Item(s)
+        this.physics.add.overlap(this.player, this.itemOne, collectItem, null, this);
+        this.physics.add.collider(this.player, this.itemOne, collectItem, null, this);
+        this.physics.add.overlap(this.player, this.itemTwo, collectItem, null, this);
+        this.physics.add.collider(this.player, this.itemTwo, collectItem, null, this);
+        this.physics.add.overlap(this.player, this.itemThree, collectItem, null, this);
+        this.physics.add.collider(this.player, this.itemThree, collectItem, null, this);
 
         // Add score text
         scoreText = this.add.text(16, 16, 'score: ' + score, { fontSize: '32px', fill: '#000' });
@@ -120,7 +130,7 @@ class playGameLevelTwo extends Phaser.Scene {
       }
 
       // Determine if user can move on to next scene
-      if(collectedItems >= 3) {
+      if(collectedItems > 3) {
         console.log("Collected Item")
         // Play Cheer 
         // this.sound.play("cheer");
