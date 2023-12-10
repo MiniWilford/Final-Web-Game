@@ -127,7 +127,7 @@ class playGameLevelTwo extends Phaser.Scene {
       }
 
       // Determine GameOver condition
-      if(player_gameOver == true || hit_times >= 1) {
+      if(player_gameOver == true || score <= -20) {
         this.scene.start("GameOver");
       }
     }
