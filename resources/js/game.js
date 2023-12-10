@@ -12,6 +12,6 @@ let config = {
             }
         }
     },
-    scene: [preloadGame, playGame, gameOver, gameWon]
+    scene: [preloadGame, playGame, playGameLevelTwo, gameOver, gameWon]
 }
 game = new Phaser.Game(config);
